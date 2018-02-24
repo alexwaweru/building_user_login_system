@@ -1,4 +1,5 @@
 {% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
 
 {% block title %}
 Login
@@ -8,22 +9,28 @@ Login
 {{super()}}
 <link rel="stylesheet" href="{{url_for('.static', filename='signin.css')}}">
 {% endblock %}
-
 {% block content %}
     <div class="container">
 
-      <form class="form-signin">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <label for="inputUsername" class="sr-only">Username</label>
-        <input type="text" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
+      <form class="form-signin" method="POST" action="/login">
+        <div class="imgcontainer">
+          <img align="middle" src="/static/img/avatar.png" alt="logo" class="avatar">
         </div>
+        <!--<h2 class="form-signin-heading">Please sign in</h2>-->
+        {{ form.hidden_tag()}}
+        {{ wtf.form_field(form.username) }}
+        {{ wtf.form_field(form.password) }}
+        {% for category, message in get_flashed_messages(with_categories=true) %}
+        <div class="alert alert-danger">
+          {{message}}
+        </div>
+        {% endfor %}
+        {{ wtf.form_field(form.remember) }}
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <div class="register">
+          <p><a href="{{ url_for('signup') }}">Register an Account</a></p>
+          <p><a href="{{ url_for('forgotpassword') }}">Forgot Password</a></p>
+        </div>
       </form>
 
     </div> <!-- /container -->

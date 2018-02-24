@@ -103,3 +103,33 @@ body {
   display: inline-block;
   border-radius: 50%;
 }
+.form-insertrecords {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-insertrecords .form-insertrecords-heading,
+.form-insertrecords {
+  margin-bottom: 10px;
+}
+.form-insertrecords .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-insertrecords .form-control:focus {
+  z-index: 2;
+}
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
